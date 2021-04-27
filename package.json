@@ -1,21 +1,31 @@
 {
   "name": "dogemod",
-  "version": "0.0.1",
-  "description": "A moderator bot for DogeHouse",
+  "version": "0.0.2",
+  "description": "A moderation bot for dogehouse",
   "main": "index.js",
+  "dependencies": {
+    "@dogehouse/kebab": "^0.2.7",
+    "axios": "^0.21.1",
+    "bad-words": "^3.0.4",
+    "nodemon": "^2.0.7"
+  },
   "scripts": {
-    "dev": "nodemon .",
-    "start": "node ."
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheOtterlord/dogemod.git"
   },
   "keywords": [
-    "bot",
-    "dogehouse"
+    "DogeHouse",
+    "Bot",
+    "Moderation"
   ],
-  "author": "Otterlord",
+  "author": "TheOtterlord",
   "license": "MIT",
-  "dependencies": {
-    "bad-words": "^3.0.4",
-    "dogehouse.js": "^2.0.2",
-    "nodemon": "^2.0.7"
-  }
+  "bugs": {
+    "url": "https://github.com/TheOtterlord/dogemod/issues"
+  },
+  "homepage": "https://github.com/TheOtterlord/dogemod#readme"
 }
