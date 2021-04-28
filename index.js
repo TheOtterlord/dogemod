@@ -1,7 +1,6 @@
 const { apiKey, banAfter } = require('./config.json')
-const { raw, wrap, tokensToString } = require('@dogehouse/kebab')
+const { raw, wrap, tokensToString, http } = require('@dogehouse/kebab')
 const Filter = require('bad-words')
-const axios = require('axios')
 
 /**
  * The app
@@ -19,33 +18,22 @@ class App {
    * Starts the application
    */
   async start() {
-    // Fetch our access token
-    const res = await axios('https://api.dogehouse.tv/bot/auth/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: {
-        apiKey
-      }
-    })
-    const {accessToken, refreshToken} = res.data
-
     // Attempt to connect to the api
     try {
+      const {accessToken, refreshToken} = await http.bot.auth(apiKey)
       this.wrapper = wrap(await raw.connect(
         accessToken,
         refreshToken,
         {
           onConnectionTaken: () => {
-            console.error("\nAnother client has taken the connection");
-            process.exit();
+            console.error("\nAnother client has taken the connection")
+            process.exit()
           }
         }
       ))
     } catch (err) {
       // something went wrong
-      if (err.code === 4001) console.error("Invalid token!");
+      if (err.code === 4001) console.error("Invalid token!")
       // console.error(err)
       process.exit()
     }
@@ -54,7 +42,7 @@ class App {
     const room = process.argv[2] ?? ''
 
     this.wrapper.subscribe.newChatMsg(async ({userId, msg}) => {
-      const text = tokensToString(msg.tokens);
+      const text = tokensToString(msg.tokens)
       console.log(`${msg.displayName}: ${text}`)
 
       // return if sender is the bot

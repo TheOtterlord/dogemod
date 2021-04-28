@@ -4,8 +4,7 @@
   "description": "A moderation bot for dogehouse",
   "main": "index.js",
   "dependencies": {
-    "@dogehouse/kebab": "^0.2.7",
-    "axios": "^0.21.1",
+    "@dogehouse/kebab": "^0.2.8",
     "bad-words": "^3.0.4",
     "nodemon": "^2.0.7"
   },
