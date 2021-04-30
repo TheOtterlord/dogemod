@@ -1,7 +1,5 @@
 # DogeMod
 
-> NOTE: DogeMod is a work in progress
-
 DogeMod is a simple moderation bot for [DogeHouse](https://dogehouse.tv) created by [TheOtterlord](https://github.com/TheOtterlord) to help protect your room chats.
 
 DogeMod deletes messages that trigger the profanity filter (uses `bad-words` npm package) and warns the user who sent the message.
